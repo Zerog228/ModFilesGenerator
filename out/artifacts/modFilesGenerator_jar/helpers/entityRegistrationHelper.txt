@@ -1,0 +1,91 @@
+package com.zink.entity;
+
+import com.zink.entity.robot_spider.RobotSpider;
+import com.zink.entity.forsaken_zombie.ForsakenZombie;
+import com.zink.entity.flying_baloon_machine_monster.FlyingBaloonMachineMonster;
+import com.zink.entity.test_zombie.TestZombie;
+import com.zink.entity.flying_enderman.FlyingEnderman;
+import com.zink.entity.flying_machine_boss.FlyingMachineBoss;
+import com.zink.entity.machine_ship.MachineShip;
+import com.zink.entity.machine_parrot.MachineParrot;
+import com.zink.entity.custom.EugenEntity;
+import com.zink.entity.cube_entity.CubeEntity;
+import com.zink.tsm.TestMod;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+
+public class RegisterEntities implements ModInitializer {
+
+    public static final EntityType<CubeEntity> CUBE = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(TestMod.MOD_ID, "cube"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CubeEntity::new).dimensions(EntityDimensions.fixed(0.75f, 0.75f)).build()
+    );
+    public static final EntityType<EugenEntity> PRINZ_EUGEN = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(TestMod.MOD_ID, "prinz_eugen"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, EugenEntity::new).dimensions(EntityDimensions.fixed(3f, 3f)).build()
+    );
+    public static final EntityType<MachineParrot> MACHINE_PARROT = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "machine_parrot"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MachineParrot::new).dimensions(EntityDimensions.fixed(1f, 1f)).build()
+    );
+    public static final EntityType<MachineShip> MACHINE_SHIP = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "machine_ship"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MachineShip::new).dimensions(EntityDimensions.fixed(1.0f, 1.0f)).build()
+    );
+    public static final EntityType<FlyingMachineBoss> FLYING_MACHINE_BOSS = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "flying_machine_boss"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FlyingMachineBoss::new).dimensions(EntityDimensions.fixed(5.0f, 1.0f)).build()
+    );
+    public static final EntityType<FlyingEnderman> FLYING_ENDERMAN = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "flying_enderman"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FlyingEnderman::new).dimensions(EntityDimensions.fixed(1.0f, 3.0f)).build()
+    );
+    public static final EntityType<TestZombie> TEST_ZOMBIE = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "test_zombie"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, TestZombie::new).dimensions(EntityDimensions.fixed(4.0f, 1.0f)).build()
+    );
+    public static final EntityType<FlyingBaloonMachineMonster> FLYING_BALOON_MACHINE_MONSTER = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "flying_baloon_machine_monster"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FlyingBaloonMachineMonster::new).dimensions(EntityDimensions.fixed(1.0f, 1.0f)).build()
+    );
+    public static final EntityType<ForsakenZombie> FORSAKEN_ZOMBIE = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "forsaken_zombie"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ForsakenZombie::new).dimensions(EntityDimensions.fixed(1.0f, 2.0f)).build()
+    );
+    public static final EntityType<RobotSpider> ROBOT_SPIDER = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier("tsm", "robot_spider"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, RobotSpider::new).dimensions(EntityDimensions.fixed(2.0f, 1.0f)).build()
+    );
+    //For replace by auto-generation
+
+    @Override
+    public void onInitialize() {
+        FabricDefaultAttributeRegistry.register(CUBE, CubeEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(PRINZ_EUGEN, EugenEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(MACHINE_PARROT, MachineParrot.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(MACHINE_SHIP, MachineShip.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_MACHINE_BOSS, FlyingMachineBoss.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_ENDERMAN, FlyingEnderman.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(TEST_ZOMBIE, TestZombie.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_BALOON_MACHINE_MONSTER, FlyingBaloonMachineMonster.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(FORSAKEN_ZOMBIE, ForsakenZombie.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(ROBOT_SPIDER, RobotSpider.createMobAttributes());
+        //Initialize new entity
+    }
+}

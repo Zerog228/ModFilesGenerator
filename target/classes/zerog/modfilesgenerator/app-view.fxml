@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zerog.modfilesgenerator.Controller">
+   <children>
+      <TabPane prefHeight="655.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="blockAndItemTab" onSelectionChanged="#ItemAndBlockTabChosen" text="Предмет и блок">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="130.0" prefWidth="145.0" />
+            </content>
+               <content>
+                  <AnchorPane fx:id="anchorPane" prefHeight="623.0" prefWidth="1100.0">
+                     <children>
+                        <Rectangle fx:id="resourceBg" arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="215.0" layoutX="388.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="157.0" layoutX="933.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+                        <Rectangle fx:id="javaBg" arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="156.0" layoutX="657.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="37.0" layoutX="388.0" layoutY="267.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3339" height="37.0" layoutX="388.0" layoutY="229.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                        <ScrollPane layoutX="939.0" layoutY="39.0" prefHeight="101.0" prefWidth="256.0" style="-fx-background-color: #444e57;">
+                           <content>
+                              <GridPane fx:id="textureGrid" alignment="CENTER" prefHeight="101.0" prefWidth="253.0" style="-fx-background-color: #444e57;">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="177.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="72.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="itemTextureFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="item texture" />
+                                    <TextField fx:id="itemTextureText" editable="false" prefHeight="25.0" prefWidth="72.0" text="I TEXTURE" GridPane.columnIndex="1" />
+                                    <TextField fx:id="blockTextureFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="block texture" GridPane.rowIndex="4" />
+                                    <TextField fx:id="blockTextureText" editable="false" prefHeight="25.0" prefWidth="72.0" text="B TEXTURE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="entityTextureFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="entity texture" GridPane.rowIndex="5" />
+                                    <TextField fx:id="entityTextureText" editable="false" prefHeight="25.0" prefWidth="72.0" text="E TEXTURE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="translationFile" editable="false" layoutX="396.0" layoutY="35.0" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="translation .json" />
+                        <TextField fx:id="translationText" editable="false" layoutX="575.0" layoutY="35.0" prefHeight="25.0" prefWidth="64.0" text="LANG FILE" />
+                        <Text fx:id="resourceText" fill="WHITE" layoutX="398.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resource folders" textAlignment="CENTER" wrappingWidth="240.13671875">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <ScrollPane layoutX="395.0" layoutY="123.0" prefHeight="101.0" prefWidth="256.0" style="-fx-background-color: #444e57;">
+                          <content>
+                              <GridPane fx:id="resourceGrid" alignment="CENTER" prefHeight="101.0" prefWidth="253.0" style="-fx-background-color: #444e57;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="177.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="72.0" />
+                                </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="itemModelFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="item models folder" />
+                                    <TextField fx:id="itemModelFolderText" editable="false" prefHeight="25.0" prefWidth="64.0" text="I MODEL" GridPane.columnIndex="1" />
+                                    <TextField fx:id="blockModelFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="block models folder" GridPane.rowIndex="1" />
+                                    <TextField fx:id="blockModelFolderText" editable="false" prefHeight="25.0" prefWidth="64.0" text="B MODEL" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="blockstateFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="blockstates folder" GridPane.rowIndex="2" />
+                                    <TextField fx:id="blockstateFolderText" editable="false" prefHeight="25.0" prefWidth="64.0" text="B STATE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="geoFolderText" editable="false" prefHeight="25.0" prefWidth="72.0" text="G PATH" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="geoFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="geo folder" GridPane.rowIndex="4" />
+                                    <TextField fx:id="animationFolderText" editable="false" prefHeight="25.0" prefWidth="72.0" text="A PATH" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="animationFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="animation folder" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                          </content>
+                        </ScrollPane>
+                        <ScrollPane layoutX="663.0" layoutY="39.0" prefHeight="101.0" prefWidth="256.0" style="-fx-background-color: #444e57;">
+                           <content>
+                              <GridPane fx:id="javaGrid" alignment="CENTER" prefHeight="101.0" prefWidth="253.0" style="-fx-background-color: #444e57;">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="177.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="72.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="entityFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="entity folder" GridPane.rowIndex="6" />
+                                    <TextField fx:id="entityFolderText" editable="false" prefHeight="25.0" prefWidth="72.0" text="E PATH" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="entityClass" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="reg entity class" GridPane.rowIndex="11" />
+                                    <TextField fx:id="entityClassText" editable="false" prefHeight="25.0" prefWidth="72.0" text="E CLASS" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <TextField fx:id="regAttributesClass" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="reg attributes class" GridPane.rowIndex="7" />
+                                    <TextField fx:id="regAttributesClassText" editable="false" prefHeight="25.0" prefWidth="72.0" text="AT CLASS" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <TextField fx:id="clientModClass" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="client mod class" GridPane.rowIndex="1" />
+                                    <TextField fx:id="clientModClassText" editable="false" prefHeight="25.0" prefWidth="72.0" text="C CLASS" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="modBlockEntitiesClass" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="mod BlockEntities class" GridPane.rowIndex="2" />
+                                    <TextField fx:id="modBlockEntitiesClassText" editable="false" prefHeight="25.0" prefWidth="72.0" text="MBE CLASS" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="blockFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="block classes folder" GridPane.rowIndex="4" />
+                                    <TextField fx:id="blockFolderText" editable="false" prefHeight="25.0" prefWidth="72.0" text="B PATH" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="itemFolder" editable="false" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="item classes folder" GridPane.rowIndex="5" />
+                                    <TextField fx:id="itemFolderText" editable="false" prefHeight="25.0" prefWidth="72.0" text="I PATH" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <Text fx:id="textureText" fill="WHITE" layoutX="944.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texture folders" textAlignment="CENTER" wrappingWidth="240.13671875">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="javaText" fill="WHITE" layoutX="670.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Java folders" textAlignment="CENTER" wrappingWidth="240.13671875">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <CheckBox fx:id="createNewLangFile" layoutX="398.0" layoutY="269.0" mnemonicParsing="false" onAction="#switchLangFileCreation" prefHeight="32.0" prefWidth="240.0" text="Создать новый языковой файл" textFill="RED">
+                           <tooltip>
+                              <Tooltip fx:id="createNewTranslationTooltip" text="You also need to choose &quot;Translation&quot; in work mode" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </CheckBox>
+                        <TextField fx:id="resourceFolder" editable="false" layoutX="396.0" layoutY="64.0" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="resource folder" />
+                        <TextField fx:id="resourceFolderText" editable="false" layoutX="575.0" layoutY="64.0" prefHeight="25.0" prefWidth="64.0" text="REC PATH">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip fx:id="resourcePathTooltip" text="Path to resource folder. For example: &quot;TestMod\src\main\resources&quot;" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </TextField>
+                        <CheckBox fx:id="createNewResourceFolder" layoutX="398.0" layoutY="233.0" mnemonicParsing="false" onAction="#switchFolderCreation" prefHeight="32.0" prefWidth="240.0" text="Создать новые папки для ресурсов" textFill="RED">
+                           <tooltip>
+                              <Tooltip fx:id="createNewPathTooltip" text="You also need to choose &quot;Create new path&quot; in work mode" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </CheckBox>
+                        <TextField fx:id="meFolder" editable="false" layoutX="396.0" layoutY="94.0" onMousePressed="#selectFolderOrFile" pickOnBounds="false" prefHeight="25.0" prefWidth="179.0" promptText="main/java/.../me folder" />
+                        <TextField fx:id="meFolderText" editable="false" layoutX="575.0" layoutY="94.0" prefHeight="25.0" prefWidth="64.0" text="ME PATH">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip fx:id="mePathTooltip" text="Path to mod/me folder. For example: &quot;TestMod\src\main\java\com\zink&quot;" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </TextField>
+                        <AnchorPane fx:id="texturesPane" layoutY="445.0" prefHeight="179.0" prefWidth="466.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="179.0" stroke="BLACK" strokeType="INSIDE" width="466.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="42.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="465.0" />
+                              <Text fx:id="upText" fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Верх" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="northText" fill="WHITE" layoutX="86.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Север" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fx:id="sidePicture1" fitHeight="64.0" fitWidth="64.0" layoutX="14.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="sidePicture2" fitHeight="64.0" fitWidth="64.0" layoutX="86.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="sidePicture3" fitHeight="64.0" fitWidth="64.0" layoutX="169.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                              <Text fx:id="westText" fill="WHITE" layoutX="169.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Запад" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="southText" fill="WHITE" layoutX="241.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Юг" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="eastText" fill="WHITE" layoutX="312.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Восток" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="downText" fill="WHITE" layoutX="388.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Низ" textAlignment="CENTER" wrappingWidth="64.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fx:id="sidePicture4" fitHeight="64.0" fitWidth="64.0" layoutX="241.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="sidePicture5" fitHeight="64.0" fitWidth="64.0" layoutX="312.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="sidePicture6" fitHeight="64.0" fitWidth="64.0" layoutX="388.0" layoutY="58.0" onDragExited="#mouseDragReleased" onMousePressed="#onTextureChoice" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="addTagsPane" layoutX="766.0" layoutY="427.0" prefHeight="166.0" prefWidth="264.0" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="197.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+                              <Text fx:id="tagsText" fill="WHITE" layoutX="20.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags" textAlignment="CENTER" wrappingWidth="227.0">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Text>
+                              <ChoiceBox fx:id="toolTagBox" layoutY="66.0" prefHeight="25.0" prefWidth="123.0" />
+                              <ChoiceBox fx:id="miningLevelBox" layoutX="144.0" layoutY="66.0" prefHeight="25.0" prefWidth="123.0" />
+                              <Text fx:id="toolText" fill="WHITE" layoutX="-17.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tool" textAlignment="CENTER" wrappingWidth="158.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="miningLevelText" fill="WHITE" layoutX="142.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mining level" textAlignment="CENTER" wrappingWidth="128.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab fx:id="entityTab" onSelectionChanged="#geckoTabChosen" text="Gecko things">
+              <content>
+                <AnchorPane fx:id="entityPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="168.0" layoutX="847.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                        <AnchorPane layoutX="550.0" layoutY="395.0" prefHeight="264.0" prefWidth="192.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="207.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                              <CheckBox fx:id="geckoEntityCheckbox" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#geckoEntityCheckboxChoose" prefHeight="17.0" prefWidth="140.0" text="Entity" textFill="WHITE">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="geckoBlockCheckbox" layoutX="26.0" layoutY="93.0" mnemonicParsing="false" onAction="#geckoBlockCheckboxChoose" prefHeight="17.0" prefWidth="140.0" text="Block" textFill="WHITE">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="geckoItemCheckbox" layoutX="26.0" layoutY="164.0" mnemonicParsing="false" onAction="#geckoItemCheckboxChoose" prefHeight="17.0" prefWidth="140.0" text="Item" textFill="WHITE">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="-11.0" layoutY="395.0" prefHeight="235.0" prefWidth="538.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="228.0" layoutX="5.0" stroke="BLACK" strokeType="INSIDE" width="553.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutX="5.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="553.0" />
+                              <AnchorPane fx:id="animationsAnchorPane" layoutX="12.0" layoutY="3.0" prefHeight="185.0" prefWidth="526.0">
+                                 <children>
+                                    <Text fx:id="animationListText" fill="WHITE" layoutX="3.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите нужные анимации:" textAlignment="CENTER" wrappingWidth="545.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="idleAnimationText" alignment="CENTER" editable="false" layoutX="14.0" layoutY="30.0" text="Idle animation">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="movementAnimationText" alignment="CENTER" editable="false" layoutX="189.0" layoutY="30.0" text="Movement animation">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField alignment="CENTER" editable="false" layoutX="364.0" layoutY="30.0" text="...">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <ChoiceBox fx:id="idleAnimationChoicebox" layoutX="14.0" layoutY="68.0" prefHeight="25.0" prefWidth="173.0" />
+                                    <ChoiceBox fx:id="movementAnimationChoicebox" layoutX="189.0" layoutY="68.0" prefHeight="25.0" prefWidth="174.0" />
+                                    <CheckBox fx:id="isHostile" layoutX="364.0" layoutY="66.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="173.0" style="-fx-border-color: WHITE;" text="Is hostile" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="entitySettingsPane" layoutX="15.0" layoutY="2.0" prefHeight="232.0" prefWidth="538.0" visible="false">
+                                 <children>
+                                    <AnchorPane layoutX="2.0" layoutY="7.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f3840" height="168.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
+                                          <Text fx:id="entitySizeText" fill="WHITE" layoutX="3.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Размер сущности" textAlignment="CENTER" wrappingWidth="243.0">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="entitySizeX" alignment="CENTER" layoutX="14.0" layoutY="32.0" prefHeight="33.0" prefWidth="57.0" promptText="X">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="entitySizeY" alignment="CENTER" layoutX="14.0" layoutY="72.0" prefHeight="33.0" prefWidth="57.0" promptText="Y">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="entitySizeZ" alignment="CENTER" editable="false" layoutX="14.0" layoutY="111.0" prefHeight="33.0" prefWidth="57.0" promptText="Z" text="No">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="255.0" layoutY="1.0" prefHeight="174.0" prefWidth="281.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f3840" height="169.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="279.0" />
+                                          <Text fx:id="attributesText" fill="WHITE" layoutX="5.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Атрибуты" textAlignment="CENTER" wrappingWidth="270.13671875">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Text>
+                                          <ScrollPane layoutX="6.0" layoutY="41.0" prefHeight="130.0" prefWidth="274.0">
+                                             <content>
+                                                <GridPane fx:id="attributesPane" gridLinesVisible="true" prefHeight="234.0" prefWidth="304.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="243.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="62.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Text fx:id="maxHealthAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Max health" textAlignment="CENTER" wrappingWidth="243.13671875">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="maxHealthAtt" alignment="CENTER" prefHeight="46.0" prefWidth="78.0" promptText="20" GridPane.columnIndex="1">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="maxHealthAttTooltip" text="HP of entity. Default is 20" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="followRangeAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Follow range" textAlignment="CENTER" wrappingWidth="243.13671875" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="followRangeAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="32" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="followRangeAttTooltip" text="Follow range in blocks. Default is 32" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="kbResAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Knockback resistance" textAlignment="CENTER" wrappingWidth="241.13671875" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="kbResAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="kbResAttTooltip" text="Default is 0. Max is 1" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="speedAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Movement speed" textAlignment="CENTER" wrappingWidth="242.13671875" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="speedAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="0.3" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="speedAttTooltip" text="Speed ≈ this value*20. Fine is 0.3" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="damageAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack damage" textAlignment="CENTER" wrappingWidth="242.13671875" GridPane.rowIndex="4">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="damageAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="2" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="damageAttTooltip" text="Only phys. damage! Default is 2" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="armorAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Armor" textAlignment="CENTER" wrappingWidth="242.13671875" GridPane.rowIndex="5">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="armorAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="armorAttTooltip" text="Default is 0. Max is 30" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                      <Text fx:id="attackKbAttText" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack knockback" textAlignment="CENTER" wrappingWidth="242.13671875" GridPane.rowIndex="6">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <TextField fx:id="attackKbAtt" alignment="CENTER" prefHeight="46.0" prefWidth="62.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                         <tooltip>
+                                                            <Tooltip fx:id="attackKbAttTooltip" text="Only works with phys. attacks! Max is 5" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Tooltip>
+                                                         </tooltip>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Pagination fx:id="geckoEntityPagination" maxPageIndicatorCount="3" pageCount="4" prefHeight="235.0" prefWidth="559.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="spawnEggPane" layoutX="395.0" layoutY="5.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="106.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="106.0" layoutX="120.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="139.0" />
+                              <ColorPicker fx:id="innerColor" layoutX="127.0" layoutY="61.0" onAction="#onInnerColorChanged" />
+                              <ColorPicker fx:id="outerColor" layoutX="127.0" layoutY="116.0" onAction="#onOuterColorChanged" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="42.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
+                              <Text fx:id="spawnEggText" fill="WHITE" layoutX="5.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Яйцо спавна" textAlignment="CENTER" wrappingWidth="248.13671875">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutX="847.0" layoutY="578.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                        <Text fx:id="entityPictureTextureText" fill="WHITE" layoutX="850.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Текстура" textAlignment="CENTER" wrappingWidth="186.13671875">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="entityPicture" fitHeight="103.0" fitWidth="99.0" layoutX="897.0" layoutY="512.0" onDragExited="#mouseDragReleased" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane layoutX="354.0" layoutY="203.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="185.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                              <Text fx:id="gecko_display_settings_text" fill="WHITE" layoutX="17.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gecko Display settings" wrappingWidth="158.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+                              <TextField fx:id="displaySettingsDnD" alignment="CENTER" editable="false" layoutX="11.0" layoutY="61.0" onDragExited="#jsonDragDropped" prefHeight="64.0" prefWidth="166.0" text="Display settings D&amp;D">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip fx:id="displayDnDTooltip" text="Drag and drop here JSON display model" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Tooltip>
+                                 </tooltip>
+                              </TextField>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="settingsTab" onSelectionChanged="#settingsTabChosen" text="Настройки">
+              <content>
+                <AnchorPane fx:id="optionsAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="260.0" layoutX="658.0" layoutY="366.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="465.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="388.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="31.0" layoutY="161.0" stroke="BLACK" strokeType="INSIDE" width="388.0" />
+                        <TextField fx:id="languageSelectionText" alignment="BOTTOM_CENTER" editable="false" layoutX="674.0" layoutY="393.0" prefHeight="39.0" prefWidth="150.0" text="Выбор языка">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <ScrollPane fx:id="languageScrollPane" layoutX="674.0" layoutY="438.0" prefHeight="161.0" prefWidth="150.0">
+                           <content>
+                              <GridPane fx:id="languageGridPane" prefHeight="159.0" prefWidth="149.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <Button fx:id="confirmClearLangFolder" layoutX="827.0" layoutY="438.0" mnemonicParsing="false" onAction="#clearLangFolder" prefHeight="47.0" prefWidth="127.0" text="Confirm" />
+                        <CheckBox fx:id="clearLangFolder" layoutX="827.0" layoutY="391.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="128.0" style="-fx-border-color: white;" text="Clear lang folder" textFill="WHITE">
+                           <tooltip>
+                              <Tooltip fx:id="clearLangFolderTooltip" text="Clear folder with current lang files" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </CheckBox>
+                        <Text fx:id="notificationsText" fill="WHITE" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Уведомления в консоль" textAlignment="CENTER" wrappingWidth="388.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <CheckBox fx:id="newLangFileNotification" layoutX="14.0" layoutY="197.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Created new lang file" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="incorrectEntitySizeNotification" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Entity size is unselected or incorrect" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="newFolderNotification" layoutX="14.0" layoutY="280.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Created new folder" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="startupNotification" layoutX="14.0" layoutY="322.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Startup notification" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="failedPathNotification" layoutX="14.0" layoutY="366.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Failed to load path" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="savedToConfigNotification" layoutX="14.0" layoutY="413.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="363.0" selected="true" text="Saved to config" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="129.0" layoutX="658.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="545.0" />
+                        <Button fx:id="checkClassesButton" layoutX="675.0" layoutY="273.0" mnemonicParsing="false" onAction="#checkAllClasses" prefHeight="48.0" prefWidth="149.0" text="Check">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="675.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check if all classes set properly" wrappingWidth="149.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="showWelcomeScreenButton" layoutX="840.0" layoutY="273.0" mnemonicParsing="false" onAction="#showWelcomeScreen" prefHeight="48.0" prefWidth="149.0" text="Show">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="840.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Show welcome screen again" wrappingWidth="149.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <AnchorPane layoutX="407.0" layoutY="140.0" prefHeight="185.0" prefWidth="227.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="253.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="33.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="229.0" />
+                              <Text fill="WHITE" layoutX="1.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Версия программы" textAlignment="CENTER" wrappingWidth="228.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Text>
+                              <ChoiceBox fx:id="programVersionChooseBox" layoutX="14.0" layoutY="55.0" prefHeight="27.0" prefWidth="206.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="directionsTab" onSelectionChanged="#onDirectionsTabChosen" text="Пути">
+              <content>
+                <AnchorPane fx:id="pathPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="600.0" layoutX="14.0" layoutY="12.0" stroke="BLACK" strokeType="INSIDE" width="628.0" />
+                        <ScrollPane layoutX="23.0" layoutY="21.0" prefHeight="575.0" prefWidth="607.0">
+                           <content>
+                              <GridPane fx:id="allPathesPane" prefHeight="557.0" prefWidth="672.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="580.0" minWidth="10.0" prefWidth="572.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tutorialsTab" onSelectionChanged="#tutorialsTabChosen" text="Tutorials">
+              <content>
+                <AnchorPane fx:id="tutorialsPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane fx:id="biEntityBlockTutorialPane" layoutX="14.0" layoutY="15.0" prefHeight="596.0" prefWidth="1173.0" visible="false">
+                           <children>
+                              <ScrollPane layoutY="1.0" prefHeight="595.0" prefWidth="388.0">
+                                 <content>
+                                    <AnchorPane prefHeight="1132.0" prefWidth="382.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="41.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#36414a" height="1143.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Text fx:id="tutorialForBIText" fill="WHITE" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Block and item creation tutorial" textAlignment="CENTER" wrappingWidth="376.13671875">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="tutorialChooseBIText" fill="WHITE" layoutX="5.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Choose block/item work mode" wrappingWidth="366.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialChooseBIImage" fitHeight="150.0" fitWidth="168.0" layoutX="14.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialChooseBIImage2" fitHeight="150.0" fitWidth="158.0" layoutX="205.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialFillFieldsText" fill="WHITE" layoutX="3.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Fill needed fields and auto-selected pathes" wrappingWidth="371.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialFillFieldsImage" fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialFillFieldsImage2" fitHeight="150.0" fitWidth="363.0" layoutX="10.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialDnDText" fill="WHITE" layoutX="2.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Drag and drop texture (and, if mode is 'custom' - model)" wrappingWidth="373.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialDnDImage" fitHeight="150.0" fitWidth="359.0" layoutX="8.0" layoutY="638.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialStartButtonText" fill="WHITE" layoutX="8.0" layoutY="812.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Press 'Start' button" wrappingWidth="373.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialStartButtonImage" fitHeight="150.0" fitWidth="202.0" layoutX="79.0" layoutY="820.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialRegisterItemInCodeText" fill="WHITE" layoutX="5.0" layoutY="994.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Register item in code" wrappingWidth="373.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialRegisterItemInCodeImage" fitHeight="150.0" fitWidth="355.0" layoutX="10.0" layoutY="1002.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane layoutX="398.0" prefHeight="596.0" prefWidth="388.0">
+                                 <content>
+                                    <AnchorPane prefHeight="1161.0" prefWidth="379.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="40.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="1875.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="40.0" layoutX="1.0" layoutY="1764.0" stroke="BLACK" strokeType="INSIDE" width="375.0" />
+                                          <Text fx:id="tutorialForEntityText" fill="WHITE" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gecko entity creation tutorial" textAlignment="CENTER" wrappingWidth="376.13671875">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="tutorialOpenEntityTabText" fill="WHITE" layoutX="5.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Go to Gecko entity tab" wrappingWidth="366.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="tutorialFillEntityFieldsText" fill="WHITE" layoutX="2.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Fill needed fields and auto-selected pathes, choose colors for spawn egg" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialFillEntityFieldsImage" fitHeight="150.0" fitWidth="377.0" layoutX="-1.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialFillEntityFieldsImage2" fitHeight="150.0" fitWidth="200.0" layoutX="89.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialEntityDnDText" fill="WHITE" layoutX="6.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Drag and drop animation, texture and geo.json model" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialEntityDnDImage" fitHeight="150.0" fitWidth="367.0" layoutX="4.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialEntityDnDImage2" fitHeight="150.0" fitWidth="367.0" layoutX="5.0" layoutY="682.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialSelectEntityValuesText" fill="WHITE" layoutX="1.0" layoutY="856.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Select animation, fill attributes values" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialSelectEntityValuesImage" fitHeight="150.0" fitWidth="365.0" layoutX="5.0" layoutY="896.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialSelectEntityValuesImage2" fitHeight="150.0" fitWidth="365.0" layoutX="5.0" layoutY="1046.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialEntityStartButtonText" fill="WHITE" layoutX="1.0" layoutY="1220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Press start button" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="tutorialEntityRegisteredInCodeText" fill="WHITE" layoutY="1252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Register spawn egg in code. (You'll see needed code in console. But you'll need to change item group manually!)" wrappingWidth="374.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialEntityRegisteredInCodeImage" fitHeight="150.0" fitWidth="367.0" layoutX="4.0" layoutY="1324.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="tutorialEntityRegisteredInCodeImage2" fitHeight="73.0" fitWidth="365.0" layoutX="5.0" layoutY="1482.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialEntityAddedText" fill="WHITE" layoutX="1.0" layoutY="1579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Voalá!" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="tutorialEntityAddedImage" fitHeight="179.0" fitWidth="378.0" layoutX="-2.0" layoutY="1587.0" pickOnBounds="true" preserveRatio="true" />
+                                          <Text fx:id="tutorialEntityWarningText" fill="RED" layoutX="6.0" layoutY="1790.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!" textAlignment="CENTER" wrappingWidth="372.13671875">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fill="WHITE" layoutX="14.0" layoutY="1826.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entity geo model and animation name need to be in lower case, without spaces!" textAlignment="CENTER" wrappingWidth="346.13671875">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane layoutX="796.0" layoutY="-2.0" prefHeight="594.0" prefWidth="388.0">
+                                 <content>
+                                    <AnchorPane prefHeight="573.0" prefWidth="363.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="592.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="41.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
+                                          <Text fx:id="tutorialForBlockEntityText" fill="WHITE" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Block-entity tutorial" textAlignment="CENTER" wrappingWidth="376.13671875">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="appTutorialsPane" prefHeight="622.0" prefWidth="1200.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="574.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fx:id="appParadigm" fill="WHITE" layoutX="27.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="App use paradigm" textAlignment="CENTER" wrappingWidth="319.13671875">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="14.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• First of all, block/item/entity/... name in &quot;name&quot; field Must be in lowercase, without any spaces. You can see example in tutorials or in tip after hovering mouse over certain field" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="14.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="13.0" layoutY="222.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fill="WHITE" layoutX="14.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Secondly, all json file names that you use (models, animations, etc.), must also be in lowercase without spaces" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="14.0" layoutY="338.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="574.0" layoutX="427.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fill="WHITE" layoutX="14.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• And last but not least: be very attentive while creating different things. Some buttons and fields may become visible on certain work modes. In some cases app can autocomplete them and send message to console, but bugs may happen. Good luck!" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="13.0" layoutY="563.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fx:id="smallTips" fill="WHITE" layoutX="440.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Some small tips" textAlignment="CENTER" wrappingWidth="319.13671875">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="427.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fill="WHITE" layoutX="426.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• You will see tooltips after hovering over some fields" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="427.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• On work mode &quot;Custom block&quot; or &quot;Block with different textures&quot; you can disable or enable &quot;is rotatable&quot; mode. When enabled, it will create class that extends HorizontalFacingBlock with name that you have chosen and corresponding Blockstate" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="427.0" layoutY="139.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="427.0" layoutY="374.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                              <Text fill="WHITE" layoutX="427.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• When creating entity, you can choose hostile it or not using checkbox &quot;is hostile&quot;" wrappingWidth="346.13671875">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <ScrollPane layoutX="827.0" layoutY="14.0" prefHeight="574.0" prefWidth="359.0">
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="690.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                                          <Text fx:id="warnings" fill="WHITE" layoutX="12.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warnings" textAlignment="CENTER" wrappingWidth="319.13671875">
+                                             <font>
+                                                <Font size="28.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutY="37.21484375" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                                          <Text fill="WHITE" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• For now app is intended to work only with Fabric, but if you don't use any work modes that generates or changes .java files than it should work fine even with Forge" wrappingWidth="346.13671875">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutY="195.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                                          <Text fill="WHITE" layoutX="-2.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Most likely code for item/block/entity registration that you will see in console will not work without some small (or big) changes. Generated code is made for item/block registration from tutorials by Kaupenjoe. Try to check his channel if you want to learn more" wrappingWidth="346.13671875">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="25.0" layoutX="1.0" layoutY="407.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
+                                          <Text fill="WHITE" layoutX="1.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• If you generating custom block or item and in-game texture is broken (purple-black), then try to manually check block/item.json, located in models. Most likely path to your texture is incorrect. If path to texture is not &quot;mod_id:block(item)/texture_name&quot;, then set it to corresponding" wrappingWidth="346.13671875">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <Pagination fx:id="tutorialsPagination" layoutX="14.0" layoutY="2.0" maxPageIndicatorCount="3" pageCount="3" prefHeight="624.0" prefWidth="1173.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="youtubersTab" onSelectionChanged="#onYoutubersTabChosen" text="Youtubers">
+              <content>
+                <AnchorPane fx:id="youtubersPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="321.0" layoutX="16.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="59.0" layoutX="16.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="134.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="230.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="262.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="294.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="326.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323940" height="31.0" layoutX="16.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" width="1168.0" />
+                        <Text fill="WHITE" layoutX="24.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forge" textAlignment="CENTER" wrappingWidth="231.13671875">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="952.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fabric" textAlignment="CENTER" wrappingWidth="231.13671875">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="484.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Both" textAlignment="CENTER" wrappingWidth="231.13671875">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="youtuberKaupenjoeText" fill="#ff3434" layoutX="484.0" layoutY="156.0" onMouseClicked="#onYoutuberClicked" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: HAND;" text="Modding by Kaupenjoe" textAlignment="CENTER" wrappingWidth="256.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="youtuberCy4Text" fill="#ff3434" layoutX="65.0" layoutY="188.0" onMouseClicked="#onYoutuberClicked" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: HAND;" text="Cy4's Modding" textAlignment="CENTER" wrappingWidth="149.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="youtuberTurtyWurtyText" fill="#ff3434" layoutX="65.0" layoutY="156.0" onMouseClicked="#onYoutuberClicked" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: HAND;" text="TurtyWurty" textAlignment="CENTER" wrappingWidth="149.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="youtuberErnieBernieText" fill="#ff3434" layoutX="993.0" layoutY="156.0" onMouseClicked="#onYoutuberClicked" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: HAND;" text="ErnieBernie" textAlignment="CENTER" wrappingWidth="149.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <AnchorPane fx:id="consolePane" layoutX="652.0" layoutY="192.0" prefHeight="197.0" prefWidth="553.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#24282c" height="185.0" layoutX="4.0" layoutY="4.0" stroke="#bc9c9c" strokeType="INSIDE" width="545.0" />
+            <TextArea fx:id="consoleArea" layoutX="8.0" layoutY="9.0" prefHeight="179.0" prefWidth="538.0" style="-fx-text-fill: BLACK; -fx-background-color: RED;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dndAnchorPane" layoutX="473.0" layoutY="473.0" prefHeight="185.0" prefWidth="289.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="179.0" layoutX="-4.0" stroke="BLACK" strokeType="INSIDE" width="291.0" />
+            <TextField fx:id="jsonDnD" alignment="CENTER" editable="false" layoutX="8.0" layoutY="61.0" onDragExited="#jsonDragDropped" prefHeight="64.0" prefWidth="128.0" text="GEO MODEl D&amp;D">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <tooltip>
+                  <Tooltip fx:id="modelDnDTooltip" text="Drag and drop here JSON model" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <TextField fx:id="animationDnD" alignment="CENTER" editable="false" layoutX="148.0" layoutY="61.0" onDragExited="#jsonDragDropped" prefHeight="64.0" prefWidth="128.0" text="Animation D&amp;D">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <tooltip>
+                  <Tooltip fx:id="animationDnDTooltip" text="Drag and drop here animation JSON model" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <Text fx:id="animationText" fill="WHITE" layoutX="148.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Анимация" textAlignment="CENTER" wrappingWidth="123.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="dddText" fill="WHITE" layoutX="11.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3D модель" textAlignment="CENTER" wrappingWidth="123.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2f38" height="48.0" layoutX="-4.0" layoutY="134.0" stroke="BLACK" strokeType="INSIDE" width="291.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainFieldsPane" layoutY="32.0" prefHeight="106.0" prefWidth="388.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="103.0" layoutX="-4.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="388.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7495b2" height="64.0" layoutX="2.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="65.0" />
+            <ImageView fx:id="generatorImage" fitHeight="59.0" fitWidth="57.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="modId" layoutX="228.0" layoutY="6.0" promptText="id мода">
+               <tooltip>
+                  <Tooltip fx:id="modidTooltip" text="Your mod id. For example: &quot;tsm&quot;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <TextField fx:id="modName" focusTraversable="false" layoutX="228.0" layoutY="35.0" pickOnBounds="false" promptText="Название">
+               <tooltip>
+                  <Tooltip fx:id="nameTooltip" text="Name in code. For example: &quot;super_trumper&quot;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <TextField fx:id="translation" focusTraversable="false" layoutX="70.0" layoutY="6.0" pickOnBounds="false" prefHeight="25.0" prefWidth="150.0" promptText="Перевод">
+               <tooltip>
+                  <Tooltip fx:id="translationTooltip" text="Translation. For example: &quot;Super trumpet&quot;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </TextField>
+            <TextField fx:id="languageName" layoutX="228.0" layoutY="65.0" promptText="lang" />
+            <ChoiceBox fx:id="choiceGeneratorType" layoutX="70.0" layoutY="35.0" prefWidth="150.0" />
+            <CheckBox fx:id="onlyTranslation" layoutX="71.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-border-color: WHITE;" text="Only translation" textFill="WHITE">
+               <tooltip>
+                  <Tooltip fx:id="onlyTranslationTooltip" text="Select it if you want to add only translation in lang file" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </CheckBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="buttonPane" layoutX="1042.0" layoutY="487.0" prefHeight="166.0" prefWidth="158.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444e57" height="166.0" stroke="BLACK" strokeType="INSIDE" width="158.0" />
+            <Button fx:id="startButton" layoutX="4.0" layoutY="71.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="81.0" prefWidth="150.0" text="Начать">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="isRotatable" layoutX="5.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" selected="true" text="Rotatable" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Create class that extends HorizontalFacingBlock" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </CheckBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="welcomeScreenPane" layoutX="29.0" layoutY="38.0" prefHeight="571.0" prefWidth="1140.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#111214" height="571.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.98;" width="1140.0" />
+            <Text fx:id="welcomeText" fill="WHITE" layoutY="52.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the JSON generator" textAlignment="CENTER" underline="true" wrappingWidth="1140.0">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <CheckBox fx:id="showWelcomeScreenCheckBox" layoutX="934.0" layoutY="509.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="192.0" selected="true" style="-fx-border-color: WHITE;" text="Don't show this again" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <Text fx:id="changelogText" fill="WHITE" layoutX="60.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Changelog:" wrappingWidth="253.0">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="versionText" fill="WHITE" layoutX="14.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version:" wrappingWidth="148.99999999999994">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="infoText" fill="WHITE" layoutX="543.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Info:" wrappingWidth="192.0">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="plansText" fill="WHITE" layoutX="901.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plans:" wrappingWidth="198.0">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="52.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="535.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="893.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+            <Text fx:id="tutorialsDisclaimer" fill="WHITE" layoutX="543.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to open &quot;Tutorials&quot; tab. It can be useful" wrappingWidth="243.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="closeWelcomeScreenText" fill="RED" layoutX="1051.0" layoutY="32.0" onMouseClicked="#closeWelcomeScreen" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: HAND;" text="Close" textAlignment="CENTER" wrappingWidth="75.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="codeDisclaimer" fill="RED" layoutX="447.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disclaimer" wrappingWidth="192.0">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Text>
+            <Text fx:id="codeDisclaimerText" fill="WHITE" layoutX="317.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most of generating code (excluding .json files) and .java classes are based on corresponding ones in tutorials by Kaupenjoe. Try to check his channel first!" wrappingWidth="435.13671875">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Circle fx:id="testCircle" centerX="200.0" centerY="200.0" fill="DODGERBLUE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

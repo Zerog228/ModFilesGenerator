@@ -1,0 +1,15 @@
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
+
+public class ProperEntityNameRenderer extends GeoEntityRenderer<ProperEntityName> {
+    public ProperEntityNameRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new ProperEntityNameModel());
+
+    }
+
+    @Override
+    public Identifier getTextureLocation(ProperEntityName animatable) {
+        return super.getTextureLocation(animatable);
+    }
+}

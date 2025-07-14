@@ -1,0 +1,19 @@
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib.model.GeoModel;
+
+public class ProperBlockNameItemModel extends GeoModel<ProperBlockNameItem> {
+    @Override
+    public Identifier getModelResource(ProperBlockNameItem object) {
+        return new Identifier("mod_id", "geo/geoFile");
+    }
+
+    @Override
+    public Identifier getTextureResource(BattleHorseStatueItem object) {
+        return new Identifier("mod_id", "textures/block/texture_name");
+    }
+
+    @Override
+    public Identifier getAnimationResource(BattleHorseStatueItem animatable) {
+        return new Identifier("mod_id", "animations/animationFile");
+    }
+}

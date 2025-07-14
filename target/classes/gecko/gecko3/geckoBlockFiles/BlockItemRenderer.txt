@@ -1,0 +1,7 @@
+import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
+
+public class ProperBlockNameItemRenderer extends GeoItemRenderer<ProperBlockNameItem> {
+    public ProperBlockNameItemRenderer() {
+        super(new ProperBlockNameItemModel());
+    }
+}

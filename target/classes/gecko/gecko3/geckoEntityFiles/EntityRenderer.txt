@@ -1,0 +1,15 @@
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+
+public class ProperEntityRenderer extends GeoEntityRenderer<ProperEntityName> {
+    public ProperEntityRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new EntityModelName());
+
+    }
+
+    @Override
+    public Identifier getTextureResource(ProperEntityName instance) {
+        return new Identifier("ModId", "textures/entity/TextureFile");
+    }
+}

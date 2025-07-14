@@ -1,0 +1,7 @@
+import software.bernie.geckolib.renderer.GeoItemRenderer;
+
+public class ProperNameRenderer extends GeoItemRenderer<ProperName> {
+    public ProperNameRenderer() {
+        super(new ProperNameModel());
+    }
+}

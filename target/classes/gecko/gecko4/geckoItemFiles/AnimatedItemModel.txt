@@ -1,0 +1,19 @@
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib.model.GeoModel;
+
+public class ProperNameModel extends GeoModel<ProperName> {
+    @Override
+    public Identifier getModelResource(ProperName animatable) {
+        return new Identifier("mod_id", "geo/geoFile");
+    }
+
+    @Override
+    public Identifier getTextureResource(ProperName animatable) {
+        return new Identifier("mod_id", "textures/item/texture_name");
+    }
+
+    @Override
+    public Identifier getAnimationResource(ProperName animatable) {
+        return new Identifier("mod_id", "animations/animationFile");
+    }
+}

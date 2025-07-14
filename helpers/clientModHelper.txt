@@ -1,0 +1,85 @@
+package com.zink.tsm;
+
+import com.zink.item.BattleHorseStatue.BattleHorseStatueItemRenderer
+import com.zink.entity.battle_horse_statue.BattleHorseStatue.BattleHorseStatueRenderer
+import com.zink.entity.client.FumoBlockRenderer;
+import com.zink.entity.flying_baloon_machine_monster.FlyingBaloonMachineMonsterRenderer;
+import com.zink.entity.test_zombie.TestZombieRenderer;
+import com.zink.entity.flying_enderman.FlyingEndermanRenderer;
+import com.zink.entity.flying_machine_boss.FlyingMachineBossRenderer;
+import com.zink.entity.machine_ship.MachineShipRenderer;
+import com.zink.entity.machine_parrot.MachineParrotRenderer;
+import com.zink.entity.ModBlockEntities;
+import com.zink.entity.client.ArtilleryGunRenderer;
+import com.zink.entity.client.EugenRenderer;
+import com.zink.entity.client.OilRigRenderer;
+import com.zink.entity.cube_entity.CubeEntityModel;
+import com.zink.entity.cube_entity.CubeEntityRenderer;
+import com.zink.entity.RegisterEntities;
+import com.zink.item.client.ArtilleryGunItemRenderer;
+import com.zink.item.client.FumoBlockItemRenderer;
+import com.zink.item.client.OilRigItemRenderer;
+import com.zink.registry.ModItems;
+import com.zink.registry.ModRegistries;
+import com.zink.screen.LightningChannelerScreen;
+import com.zink.screen.MechanicalBenchScreen;
+import com.zink.screen.ModScreenHandlers;
+import com.zink.util.ModRenderHelper;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.screen.PlayerScreenHandler;
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
+
+@Environment(EnvType.CLIENT)
+public class TestClientMod implements ClientModInitializer {
+    public static final EntityModelLayer MODEL_CUBE_LAYER = new EntityModelLayer(new Identifier("entitytesting", "cube"), "main");
+
+    @Override
+    public void onInitializeClient() {
+        ModRenderHelper.SetRenderLayers();
+        HandledScreens.register(ModScreenHandlers.MECHANICAL_BENCH_SCREEN_HANDLER, MechanicalBenchScreen::new);
+        HandledScreens.register(ModScreenHandlers.LIGHTNING_CHANNELER_SCREEN_HANDLER, LightningChannelerScreen::new);
+
+        EntityRendererRegistry.register(RegisterEntities.CUBE, CubeEntityRenderer::new);
+
+        EntityRendererRegistry.register(RegisterEntities.PRINZ_EUGEN, EugenRenderer::new);
+
+        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, CubeEntityModel::getTexturedModelData);
+
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+            registry.register(new Identifier(TestMod.MOD_ID, "particle/big_smoke"));
+        }));
+
+        ParticleFactoryRegistry.getInstance().register(ModRegistries.BIG_SMOKE, FlameParticle.Factory::new);
+
+        GeoItemRenderer.registerItemRenderer(ModItems.OIL_RIG_ITEM, new OilRigItemRenderer());
+        BlockEntityRendererFactories.register(ModBlockEntities.OIL_RIG_ENTITY, OilRigRenderer::new);
+
+        GeoItemRenderer.registerItemRenderer(ModItems.ARTILLERY_GUN_ITEM, new ArtilleryGunItemRenderer());
+        BlockEntityRendererFactories.register(ModBlockEntities.ARTILLERY_GUN_ENTITY, ArtilleryGunRenderer::new);
+
+        GeoItemRenderer.registerItemRenderer(ModItems.FUMO_BLOCK_ITEM, new FumoBlockItemRenderer());
+        BlockEntityRendererFactories.register(ModBlockEntities.FUMO_BLOCK_ENTITY, FumoBlockRenderer::new);
+
+        EntityRendererRegistry.register(RegisterEntities.MACHINE_PARROT, MachineParrotRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.PRINZ_EUGEN, EugenRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.MACHINE_SHIP, MachineShipRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.FLYING_MACHINE_BOSS, FlyingMachineBossRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.FLYING_ENDERMAN, FlyingEndermanRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.TEST_ZOMBIE, TestZombieRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.FLYING_BALOON_MACHINE_MONSTER, FlyingBaloonMachineMonsterRenderer::new);
+        GeoItemRenderer.registerItemRenderer(ModItems.BATTLE_HORSE_STATUE_ITEM, new BattleHorseStatueItemRenderer());
+        BlockEntityRendererFactories.register(ModBlockEntities.BATTLE_HORSE_STATUE_ENTITY, BattleHorseStatueRenderer::new);
+        //For replace by auto-generation
+    }
+}

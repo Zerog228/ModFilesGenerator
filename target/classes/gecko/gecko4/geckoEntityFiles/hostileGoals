@@ -1,0 +1,9 @@
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(1, new AttackGoal(this));
+        this.goalSelector.add(2, new WanderAroundFarGoal(this, 0.5, 1));
+        this.goalSelector.add(3, new LookAroundGoal(this));
+
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, ChickenEntity.class, true));
+    }

@@ -1,0 +1,31 @@
+package com.zink.entity;
+
+import com.zink.entity.robot_spider.RobotSpider;
+import com.zink.entity.forsaken_zombie.ForsakenZombie;
+import com.zink.entity.flying_baloon_machine_monster.FlyingBaloonMachineMonster;
+import com.zink.entity.test_zombie.TestZombie;
+import com.zink.entity.flying_enderman.FlyingEnderman;
+import com.zink.entity.flying_machine_boss.FlyingMachineBoss;
+import com.zink.entity.cube_entity.CubeEntity;
+import com.zink.entity.custom.EugenEntity;
+import com.zink.entity.machine_parrot.MachineParrot;
+import com.zink.entity.machine_ship.MachineShip;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+
+import static com.zink.entity.RegisterEntities.*;
+
+public class RegisterAttributes {
+    public static void RegisterEntities(){
+        FabricDefaultAttributeRegistry.register(CUBE, CubeEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(PRINZ_EUGEN, EugenEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(MACHINE_PARROT, MachineParrot.setAttributes());
+        FabricDefaultAttributeRegistry.register(MACHINE_SHIP, MachineShip.setAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_MACHINE_BOSS, FlyingMachineBoss.setAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_ENDERMAN, FlyingEnderman.setAttributes());
+        FabricDefaultAttributeRegistry.register(TEST_ZOMBIE, TestZombie.setAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_BALOON_MACHINE_MONSTER, FlyingBaloonMachineMonster.setAttributes());
+        FabricDefaultAttributeRegistry.register(FORSAKEN_ZOMBIE, ForsakenZombie.setAttributes());
+        FabricDefaultAttributeRegistry.register(ROBOT_SPIDER, RobotSpider.setAttributes());
+        //For replace by auto-generation
+    }
+}

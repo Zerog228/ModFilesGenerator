@@ -1,0 +1,19 @@
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
+
+public class ProperBlockNameItemModel extends AnimatedGeoModel<ProperBlockNameItem> {
+    @Override
+    public Identifier getModelResource(ProperBlockNameItem object) {
+        return new Identifier("mod_id", "geo/geoFile");
+    }
+
+    @Override
+    public Identifier getTextureResource(ProperBlockNameItem object) {
+        return new Identifier("mod_id", "textures/block/texture_name");
+    }
+
+    @Override
+    public Identifier getAnimationResource(ProperBlockNameItem animatable) {
+        return new Identifier("mod_id", "animations/animationFile");
+    }
+}
